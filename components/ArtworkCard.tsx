@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Artwork, CuratorInsight } from '../types';
 import { getCuratorInsight } from '../services/gemini';
 import { Sparkles, Loader2, Maximize2 } from 'lucide-react';
@@ -12,6 +12,26 @@ const ArtworkCard: React.FC<Props> = ({ artwork }) => {
   const [insight, setInsight] = useState<CuratorInsight | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleGetInsight = async () => {
     if (insight) {
@@ -33,9 +53,12 @@ const ArtworkCard: React.FC<Props> = ({ artwork }) => {
   };
 
   return (
-    <div className="group relative bg-white p-8 md:p-12 mb-24 last:mb-0 transition-all duration-700 border border-gray-50 shadow-sm hover:shadow-xl">
+    <div 
+      ref={cardRef}
+      className={`group relative bg-white p-8 md:p-12 mb-24 last:mb-0 transition-all duration-700 border border-gray-50 shadow-sm hover:shadow-xl scroll-reveal ${isVisible ? 'active' : ''}`}
+    >
       <div className="grid md:grid-cols-12 gap-12 items-start">
-        <div className="md:col-span-7 relative overflow-hidden bg-gray-200 aspect-[4/3]">
+        <div className="md:col-span-7 relative overflow-hidden bg-gray-200 aspect-[4/3] image-hover-lift">
           <img 
             src={artwork.imageUrl} 
             alt={artwork.title}
@@ -48,9 +71,9 @@ const ArtworkCard: React.FC<Props> = ({ artwork }) => {
 
         <div className="md:col-span-5 flex flex-col justify-between h-full">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2 block">{artwork.year}</span>
-            <h2 className="text-4xl md:text-5xl serif mb-6">{artwork.title}</h2>
-            <div className="space-y-4 text-sm leading-relaxed text-gray-700 max-w-sm">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2 block animate-fade-up">{artwork.year}</span>
+            <h2 className="text-4xl md:text-5xl serif mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>{artwork.title}</h2>
+            <div className="space-y-4 text-sm leading-relaxed text-gray-700 max-w-sm animate-fade-up" style={{ animationDelay: '0.2s' }}>
               <p>{artwork.description}</p>
               <div className="pt-4 border-t border-gray-200">
                 <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">Methodology</p>
@@ -63,11 +86,11 @@ const ArtworkCard: React.FC<Props> = ({ artwork }) => {
             </div>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 animate-fade-up" style={{ animationDelay: '0.3s' }}>
             <button 
               onClick={handleGetInsight}
               disabled={isLoading}
-              className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-emerald-700 transition-all disabled:opacity-50"
+              className="flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-emerald-700 transition-all disabled:opacity-50 hover:shadow-lg hover:scale-105"
             >
               {isLoading ? <Loader2 className="animate-spin" size={16} /> : <Sparkles size={16} />}
               {insight ? "Close Research Report" : "Explore AI Research Insights"}

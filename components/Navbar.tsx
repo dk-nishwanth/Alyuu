@@ -1,29 +1,47 @@
 
-import React from 'react';
-import { Globe, Search } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
-  return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-8 py-8 flex items-start justify-between bg-transparent pointer-events-none">
-      <div className="flex items-center gap-8 pointer-events-auto invisible">
-        {/* Placeholder to keep logo centered */}
-        <div className="w-24"></div>
-      </div>
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show navbar when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  return (
+    <nav className={`fixed top-0 left-0 w-full z-40 px-4 md:px-8 py-4 md:py-8 flex items-center justify-center bg-transparent pointer-events-none transition-transform duration-300 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
+      {/* Centered Logo */}
       <div className="flex flex-col items-center pointer-events-auto cursor-pointer group">
         <div className="flex flex-col items-center leading-none">
-          <span className="text-[20px] font-black tracking-[0.4em] uppercase group-hover:text-emerald-600 transition-colors">SLSRF</span>
-          <span className="text-[8px] font-bold tracking-[0.2em] uppercase mt-1 opacity-50">Semporutkalai Foundation</span>
+          <span className="text-lg md:text-[28px] font-pacifico tracking-wide group-hover:text-emerald-600 transition-colors" style={{ letterSpacing: '0.05em' }}>Alyushra</span>
+          <span className="text-[7px] md:text-[8px] font-bold tracking-[0.2em] uppercase mt-0.5 md:mt-1 opacity-50">Designer & Developer</span>
         </div>
       </div>
 
-      <div className="flex items-center gap-8 pointer-events-auto">
+      {/* Right side controls */}
+      <div className="absolute right-4 md:right-8 flex items-center gap-4 md:gap-8 pointer-events-auto">
         <div className="hidden md:flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
-          <button className="hover:opacity-60 text-gray-400">IN</button>
+          <button className="hover:opacity-60 text-gray-400 transition-opacity">IN</button>
           <span className="opacity-30">/</span>
-          <button className="border-b border-black">EN</button>
+          <button className="border-b border-black hover:opacity-60 transition-opacity">EN</button>
         </div>
-        <button className="hover:text-emerald-600 transition-colors"><Search size={18} /></button>
       </div>
     </nav>
   );

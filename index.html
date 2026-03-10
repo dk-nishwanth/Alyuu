@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&family=Poppins:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -35,9 +35,89 @@
         .animate-marquee {
             animation: marquee 50s linear infinite;
         }
+        @keyframes slide-in-left {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scale-up {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+        }
+        .animate-slide-in-left {
+            animation: slide-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-slide-in-right {
+            animation: slide-in-right 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-scale-up {
+            animation: scale-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .animate-glow-pulse {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
         .text-outline {
             -webkit-text-stroke: 1px rgba(0,0,0,0.1);
             color: transparent;
+        }
+        .font-bebas {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+        /* Scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .image-hover-lift {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease-out;
+        }
+        .image-hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
         }
     </style>
 <script type="importmap">
