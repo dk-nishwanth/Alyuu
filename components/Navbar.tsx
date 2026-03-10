@@ -24,14 +24,14 @@ const Navbar: React.FC = () => {
   }, [lastScrollY]);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-40 px-4 md:px-8 py-4 md:py-8 flex items-center justify-center bg-transparent pointer-events-none transition-transform duration-300 ${
+    <nav className={`fixed top-0 left-0 w-full z-40 px-4 md:px-8 py-3 md:py-8 flex items-center justify-between md:justify-center bg-transparent pointer-events-none transition-transform duration-300 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
       {/* Centered Logo */}
-      <div className="flex flex-col items-center pointer-events-auto cursor-pointer group">
-        <div className="flex flex-col items-center leading-none">
-          <span className="text-lg md:text-[28px] font-pacifico tracking-wide group-hover:text-emerald-600 transition-colors" style={{ letterSpacing: '0.05em' }}>Alyushra</span>
-          <span className="text-[7px] md:text-[8px] font-bold tracking-[0.2em] uppercase mt-0.5 md:mt-1 opacity-50">Designer & Developer</span>
+      <div className="flex flex-col items-center pointer-events-auto cursor-pointer group flex-1 md:flex-none">
+        <div className="flex flex-col items-center leading-tight">
+          <span className="text-base md:text-[28px] font-pacifico tracking-wide group-hover:text-emerald-600 transition-colors whitespace-nowrap" style={{ letterSpacing: '0.05em' }}>Alyushra</span>
+          <span className="text-[6px] md:text-[8px] font-bold tracking-[0.15em] uppercase mt-0.5 md:mt-1 opacity-50 whitespace-nowrap">Designer & Developer</span>
         </div>
       </div>
 

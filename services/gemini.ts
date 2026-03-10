@@ -9,13 +9,13 @@ export async function getCuratorInsight(title: string, description: string): Pro
   if (!apiKey || apiKey === 'PLACEHOLDER_API_KEY') {
     // Return mock data for demo purposes when API key is not set
     return {
-      painting: `A harmonious blend of ancient wisdom and modern innovation representing ${title}`,
-      analysis: `This research vertical bridges traditional Eastern practices with contemporary scientific methodologies, creating a unique approach to ${title.toLowerCase()} that honors both empirical evidence and time-tested wisdom.`,
-      historicalContext: `The foundations of ${title.toLowerCase()} can be traced back to ancient civilizations where holistic approaches to human development were deeply integrated into daily life, evolving through centuries of practice and refinement.`,
+      painting: `A harmonious blend of creativity and technical excellence representing ${title}`,
+      analysis: `This project demonstrates the integration of thoughtful design with robust technical implementation, creating a unique approach to ${title.toLowerCase()} that honors both user experience and functional requirements.`,
+      historicalContext: `The foundations of ${title.toLowerCase()} can be traced back to early digital innovation where creative vision met technical possibility, evolving through decades of practice and refinement in design and development.`,
       keyDetails: [
-        `Development of evidence-based protocols for ${title.toLowerCase()} implementation`,
-        `Integration with modern healthcare and wellness systems`,
-        `Creation of scalable training programs for practitioners and researchers`
+        `Development of user-centered design principles for ${title.toLowerCase()} implementation`,
+        `Integration with modern development frameworks and best practices`,
+        `Creation of scalable solutions for real-world applications`
       ]
     };
   }
@@ -25,15 +25,15 @@ export async function getCuratorInsight(title: string, description: string): Pro
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
-    const prompt = `You are a high-level research consultant for SLSRF (Semporutkalai Life Science Research Foundation). 
-    Provide a deep scientific and philosophical analysis of this mission vertical: "${title}". 
+    const prompt = `You are a high-level research consultant analyzing creative and technical projects. 
+    Provide a deep scientific and philosophical analysis of this project: "${title}". 
     Context: ${description}
     
     Please respond with a JSON object containing:
-    - painting: A metaphorical description of this research area (1-2 sentences)
-    - analysis: A deep bridge between Eastern wisdom and modern scientific research (2-3 sentences)
-    - historicalContext: The origin and evolution of this practice in human history (2-3 sentences)
-    - keyDetails: An array of exactly 3 specific research-driven outcomes or impact areas
+    - painting: A metaphorical description of this project (1-2 sentences)
+    - analysis: A deep analysis bridging design thinking and technical innovation (2-3 sentences)
+    - historicalContext: The origin and evolution of this type of work in technology and design (2-3 sentences)
+    - keyDetails: An array of exactly 3 specific outcomes or impact areas
     
     Format your response as valid JSON only, no markdown formatting.`;
 
@@ -57,13 +57,13 @@ export async function getCuratorInsight(title: string, description: string): Pro
     
     // Return fallback data instead of throwing error
     return {
-      painting: `A visionary representation of ${title} as a bridge between ancient wisdom and future possibilities`,
-      analysis: `This research area represents SLSRF's commitment to integrating time-honored practices with cutting-edge scientific research, creating pathways for sustainable human development and environmental stewardship.`,
-      historicalContext: `Rooted in centuries of Eastern philosophical traditions, this field has evolved to meet contemporary challenges while maintaining its core principles of holistic understanding and interconnectedness.`,
+      painting: `A visionary representation of ${title} as a bridge between creative vision and technical excellence`,
+      analysis: `This project represents a commitment to integrating thoughtful design with cutting-edge technical solutions, creating pathways for innovative digital experiences and sustainable development.`,
+      historicalContext: `Rooted in the evolution of digital design and development, this field has grown to meet contemporary challenges while maintaining core principles of user-centered design and technical excellence.`,
       keyDetails: [
-        `Research validation of traditional practices through modern scientific methods`,
-        `Development of certification programs and educational frameworks`,
-        `Creation of practical applications for individual and community transformation`
+        `Validation of design principles through technical implementation`,
+        `Development of best practices and architectural frameworks`,
+        `Creation of practical applications for user transformation and engagement`
       ]
     };
   }

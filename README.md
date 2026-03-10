@@ -1,13 +1,15 @@
-# SLSRF - Semporutkalai Life Science Research Foundation
+# Alyushra - Designer & Developer Portfolio
 
-Official launch showcase website for the Semporutkalai Life Science Research Foundation.
+Official portfolio website showcasing creative design and development projects.
 
 ## Features
 
-- Interactive AI-powered research insights
+- Interactive AI-powered project insights
 - Responsive design optimized for all devices
 - Modern React + TypeScript + Vite architecture
 - Integrated with Google Gemini AI for dynamic content
+- Contact form powered by Formspree
+- Smooth scroll animations and transitions
 
 ## Setup
 
@@ -37,4 +39,8 @@ This project is configured for Vercel deployment with automatic framework detect
 
 ## Environment Variables
 
-- `GEMINI_API_KEY`: Required for AI insights functionality
+- `GEMINI_API_KEY`: Optional - for AI insights functionality (demo mode works without it)
+
+## Contact Form
+
+The contact form is powered by Formspree. Form submissions are sent to alyushra96@gmail.com.

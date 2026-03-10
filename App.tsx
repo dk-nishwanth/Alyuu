@@ -329,7 +329,7 @@ function App() {
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-center pt-8 md:pt-12 border-t border-gray-100 gap-4 md:gap-8 text-center md:text-left">
-              <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-300">© 2025 Alyushra A - Designer & Developer</span>
+              <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-gray-300">© 2026 Alyushra A - Designer & Developer</span>
               <div className="flex items-center gap-4">
                 <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em] text-emerald-900 italic">Creating Digital Excellence</span>
               </div>
