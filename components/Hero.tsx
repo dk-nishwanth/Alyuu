@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
           {/* Creative Portfolio Label with Icon */}
           <div className="flex items-center gap-2 mb-10">
             <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-emerald-800">Creative Portfolio</span>
+            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-emerald-800">Portfolio</span>
             <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
           </div>
           
@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
 
           {/* Main Title */}
           <div className="flex flex-col items-center text-center animate-fade-up w-full">
-            <span className="text-[12px] font-black uppercase tracking-[0.7em] mb-12 text-emerald-900">Creative Portfolio</span>
+            <span className="text-[12px] font-black uppercase tracking-[0.7em] mb-12 text-emerald-900">Portfolio</span>
             <h1 className="flex flex-col items-center w-full">
               <span className="text-7xl lg:text-[11rem] xl:text-[13rem] serif leading-[0.9] break-words">
                 Design &
