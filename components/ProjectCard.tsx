@@ -35,11 +35,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Image */}
-      <img
-        src={imageUrl}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+      <div className="protected-image-container">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 protected-image"
+          draggable="false"
+          onContextMenu={(e) => e.preventDefault()}
+          onDragStart={(e) => e.preventDefault()}
+        />
+        <div className="protected-image-watermark">ALYUSHRA</div>
+      </div>
 
       {/* Overlay Gradient */}
       <motion.div

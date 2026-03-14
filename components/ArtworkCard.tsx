@@ -58,12 +58,16 @@ const ArtworkCard: React.FC<Props> = ({ artwork }) => {
       className={`group relative bg-white p-8 md:p-12 mb-24 last:mb-0 transition-all duration-700 border border-gray-50 shadow-sm hover:shadow-xl scroll-reveal ${isVisible ? 'active' : ''}`}
     >
       <div className="grid md:grid-cols-12 gap-12 items-start">
-        <div className="md:col-span-7 relative overflow-hidden bg-gray-200 aspect-[4/3] image-hover-lift">
+        <div className="md:col-span-7 relative overflow-hidden bg-gray-200 aspect-[4/3] image-hover-lift protected-image-container">
           <img 
             src={artwork.imageUrl} 
             alt={artwork.title}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 protected-image"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
+          <div className="protected-image-watermark">ALYUSHRA</div>
           <button className="absolute bottom-4 right-4 bg-white/80 p-2 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
             <Maximize2 size={16} />
           </button>

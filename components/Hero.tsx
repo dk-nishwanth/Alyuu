@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { initializeImageProtection, cleanupImageProtection } from '../utils/imageProtection';
 
 const Hero: React.FC = () => {
+  useEffect(() => {
+    // Initialize image protection when component mounts
+    initializeImageProtection();
+    
+    // Cleanup when component unmounts
+    return () => {
+      cleanupImageProtection();
+    };
+  }, []);
   return (
     <section className="relative min-h-screen md:min-h-[170vh] bg-[#fdfbf7] overflow-hidden">
       {/* Mobile Full-Screen Hero */}
@@ -125,30 +135,42 @@ const Hero: React.FC = () => {
         {/* Desktop Layout */}
         <div className="relative w-full h-[900px]">
           {/* Left: Design & UX */}
-          <div className="absolute left-[-2%] top-[10%] w-[38%] h-[650px] z-10 shadow-2xl overflow-hidden rounded-lg animate-fade-up" style={{ animationDelay: '0.2s' }}>
+          <div className="absolute left-[-2%] top-[10%] w-[38%] h-[650px] z-10 shadow-2xl overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.2s' }}>
             <img 
               src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&fit=crop&crop=center" 
               alt="UI/UX Design" 
-              className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
+              className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000 protected-image"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
+            <div className="protected-image-watermark">ALYUSHRA</div>
           </div>
 
           {/* Center: Portfolio Showcase */}
-          <div className="absolute left-[25%] bottom-0 w-[65%] h-[500px] z-30 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[20px] border-[#fdfbf7] overflow-hidden rounded-lg animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div className="absolute left-[25%] bottom-0 w-[65%] h-[500px] z-30 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] border-[20px] border-[#fdfbf7] overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.4s' }}>
             <img 
               src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&fit=crop&crop=center" 
               alt="Web Development" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover protected-image"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
+            <div className="protected-image-watermark">ALYUSHRA</div>
           </div>
 
           {/* Right: Development & Innovation */}
-          <div className="absolute right-[-4%] top-[25%] w-[40%] h-[580px] z-20 shadow-2xl overflow-hidden rounded-lg animate-fade-up" style={{ animationDelay: '0.6s' }}>
+          <div className="absolute right-[-4%] top-[25%] w-[40%] h-[580px] z-20 shadow-2xl overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.6s' }}>
             <img 
               src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80&fit=crop&crop=center" 
               alt="Product Design" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover protected-image"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
             />
+            <div className="protected-image-watermark">ALYUSHRA</div>
             
             <div className="absolute bottom-24 -left-20 rotate-[-4deg] bg-emerald-950 px-10 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-40 pointer-events-none">
               <p className="text-[13px] font-black uppercase tracking-[0.3em] text-white whitespace-nowrap">Portfolio 2025</p>
@@ -159,26 +181,38 @@ const Hero: React.FC = () => {
 
       {/* Mobile Images - Below text */}
       <div className="md:hidden flex flex-col gap-4 px-4 pb-8">
-        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up">
+        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up protected-image-container">
           <img 
             src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80&fit=crop&crop=center" 
             alt="UI/UX Design" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover protected-image"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
+          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
-        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up" style={{ animationDelay: '0.2s' }}>
+        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.2s' }}>
           <img 
             src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80&fit=crop&crop=center" 
             alt="Web Development" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover protected-image"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
+          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
-        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up" style={{ animationDelay: '0.4s' }}>
+        <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.4s' }}>
           <img 
             src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&q=80&fit=crop&crop=center" 
             alt="Product Design" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover protected-image"
+            draggable="false"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
           />
+          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
       </div>
       

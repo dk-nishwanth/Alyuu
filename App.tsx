@@ -1,4 +1,5 @@
 import React from 'react';
+import { useImageProtection } from './hooks/useImageProtection';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ArtworkCard from './components/ArtworkCard';
@@ -10,6 +11,9 @@ import { CheckCircle2, Mail, Phone, ExternalLink, ArrowRight, Globe } from 'luci
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
+  
+  // Initialize image protection
+  useImageProtection();
 
   React.useEffect(() => {
     // Simulate loading time - 5 seconds
@@ -98,8 +102,16 @@ function App() {
             
             <div className="lg:pt-16 space-y-8 md:space-y-12 animate-fade-up scroll-reveal" style={{ animationDelay: '0.2s' }}>
               <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 p-8 md:p-12 bg-white border border-emerald-50 shadow-lg hover:shadow-xl transition-all duration-500 image-hover-lift rounded-xl">
-                <div className="w-24 md:w-28 h-24 md:h-28 rounded-full overflow-hidden border-2 border-emerald-900/10 flex-shrink-0">
-                  <img src="/alyu pic.jpeg" alt="Alyushra" className="w-full h-full object-cover" />
+                <div className="w-24 md:w-28 h-24 md:h-28 rounded-full overflow-hidden border-2 border-emerald-900/10 flex-shrink-0 protected-image-container">
+                  <img 
+                    src="/alyu pic.jpeg" 
+                    alt="Alyushra" 
+                    className="w-full h-full object-cover protected-image" 
+                    draggable="false"
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
+                  />
+                  <div className="protected-image-watermark text-xs">ALYUSHRA</div>
                 </div>
                 <div className="text-center md:text-left">
                   <p className="text-xs font-black uppercase tracking-widest text-emerald-900 mb-2">Designer & Developer</p>

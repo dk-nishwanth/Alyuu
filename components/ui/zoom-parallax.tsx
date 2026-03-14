@@ -51,12 +51,16 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                 index === 6 ? '[&>div]:!top-[22.5vh] [&>div]:!left-[25vw] [&>div]:!h-[15vh] [&>div]:!w-[15vw]' : ''
               } `}
             >
-              <div className="relative h-[25vh] w-[25vw]">
+              <div className="relative h-[25vh] w-[25vw] protected-image-container">
                 <img
                   src={src || '/placeholder.svg'}
                   alt={alt || `Parallax image ${index + 1}`}
-                  className="h-full w-full object-cover rounded-lg shadow-lg"
+                  className="h-full w-full object-cover rounded-lg shadow-lg protected-image"
+                  draggable="false"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
                 />
+                <div className="protected-image-watermark">ALYUSHRA</div>
               </div>
             </motion.div>
           );
