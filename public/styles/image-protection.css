@@ -177,13 +177,13 @@ p, h1, h2, h3, h4, h5, h6, span, div:not(.protected-image-container) {
   pointer-events: auto;
 }
 
-/* Enhanced watermark */
+/* Enhanced watermark - Hidden on mobile */
 .protected-image-watermark {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.08);
   font-size: 1.5rem;
   font-weight: 900;
   pointer-events: none;
@@ -193,9 +193,17 @@ p, h1, h2, h3, h4, h5, h6, span, div:not(.protected-image-container) {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-family: 'Arial Black', sans-serif;
+  display: none;
 }
 
-/* Multiple watermarks for better protection */
+/* Show watermark only on desktop */
+@media (min-width: 1024px) {
+  .protected-image-watermark {
+    display: block;
+  }
+}
+
+/* Multiple watermarks for better protection - Hidden on mobile */
 .protected-image-container::after {
   content: 'ALYUSHRA';
   position: absolute;
@@ -210,6 +218,14 @@ p, h1, h2, h3, h4, h5, h6, span, div:not(.protected-image-container) {
   user-select: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  display: none;
+}
+
+/* Show secondary watermark only on desktop */
+@media (min-width: 1024px) {
+  .protected-image-container::after {
+    display: block;
+  }
 }
 
 /* Disable F12, Ctrl+Shift+I, Ctrl+U, etc. */
