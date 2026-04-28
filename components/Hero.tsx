@@ -144,7 +144,7 @@ const Hero: React.FC = () => {
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
             />
-            <div className="protected-image-watermark">ALYUSHRA</div>
+            <div className="protected-image-watermark hidden lg:block">ALYUSHRA</div>
           </div>
 
           {/* Center: Portfolio Showcase */}
@@ -157,7 +157,7 @@ const Hero: React.FC = () => {
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
             />
-            <div className="protected-image-watermark">ALYUSHRA</div>
+            <div className="protected-image-watermark hidden lg:block">ALYUSHRA</div>
           </div>
 
           {/* Right: Development & Innovation */}
@@ -170,7 +170,7 @@ const Hero: React.FC = () => {
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
             />
-            <div className="protected-image-watermark">ALYUSHRA</div>
+            <div className="protected-image-watermark hidden lg:block">ALYUSHRA</div>
             
             <div className="absolute bottom-24 -left-20 rotate-[-4deg] bg-emerald-950 px-10 py-4 shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-40 pointer-events-none">
               <p className="text-[13px] font-black uppercase tracking-[0.3em] text-white whitespace-nowrap">Portfolio 2025</p>
@@ -190,7 +190,6 @@ const Hero: React.FC = () => {
             onContextMenu={(e) => e.preventDefault()}
             onDragStart={(e) => e.preventDefault()}
           />
-          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
         <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.2s' }}>
           <img 
@@ -201,7 +200,6 @@ const Hero: React.FC = () => {
             onContextMenu={(e) => e.preventDefault()}
             onDragStart={(e) => e.preventDefault()}
           />
-          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
         <div className="w-full h-[250px] shadow-lg overflow-hidden rounded-lg animate-fade-up protected-image-container" style={{ animationDelay: '0.4s' }}>
           <img 
@@ -212,7 +210,6 @@ const Hero: React.FC = () => {
             onContextMenu={(e) => e.preventDefault()}
             onDragStart={(e) => e.preventDefault()}
           />
-          <div className="protected-image-watermark">ALYUSHRA</div>
         </div>
       </div>
       

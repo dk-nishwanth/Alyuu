@@ -78,7 +78,11 @@ function Feature({
               <img
                 src={beforeImage}
                 alt="Before"
-                className="absolute left-0 top-0 z-10 w-full h-full aspect-video rounded-2xl select-none border border-emerald-200/50 object-cover"
+                className="absolute left-0 top-0 z-10 w-full h-full aspect-video rounded-2xl select-none border border-emerald-200/50 object-cover protected-image"
+                draggable="false"
+                onContextMenu={(e) => e.preventDefault()}
+                onDragStart={(e) => e.preventDefault()}
+                onSelectStart={(e) => e.preventDefault()}
                 style={{
                   clipPath: `inset(0 0 0 ${inset}%)`,
                 }}
@@ -86,7 +90,11 @@ function Feature({
               <img
                 src={afterImage}
                 alt="After"
-                className="absolute left-0 top-0 w-full h-full aspect-video rounded-2xl select-none border border-emerald-200/50 object-cover"
+                className="absolute left-0 top-0 w-full h-full aspect-video rounded-2xl select-none border border-emerald-200/50 object-cover protected-image"
+                draggable="false"
+                onContextMenu={(e) => e.preventDefault()}
+                onDragStart={(e) => e.preventDefault()}
+                onSelectStart={(e) => e.preventDefault()}
               />
             </div>
             <p className="text-xs text-gray-500 mt-4 text-center">Drag the slider to compare</p>

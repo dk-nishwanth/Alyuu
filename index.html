@@ -121,60 +121,19 @@
         }
     </style>
     <script>
-        // Additional image protection
-        document.addEventListener('DOMContentLoaded', function() {
-            // Disable right-click globally
-            document.addEventListener('contextmenu', function(e) {
+        // Image protection - prevent right-click and drag
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG' || e.target.classList.contains('protected-image')) {
                 e.preventDefault();
                 return false;
-            });
-            
-            // Disable F12, Ctrl+Shift+I, Ctrl+U, etc.
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'F12' || 
-                    (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-                    (e.ctrlKey && e.shiftKey && e.key === 'J') ||
-                    (e.ctrlKey && e.key === 'u') ||
-                    e.key === 'PrintScreen') {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            
-            // Detect developer tools
-            let devtools = {open: false, orientation: null};
-            const threshold = 160;
-            
-            setInterval(function() {
-                if (window.outerHeight - window.innerHeight > threshold || 
-                    window.outerWidth - window.innerWidth > threshold) {
-                    if (!devtools.open) {
-                        devtools.open = true;
-                        document.body.classList.add('dev-tools-open');
-                    }
-                } else {
-                    if (devtools.open) {
-                        devtools.open = false;
-                        document.body.classList.remove('dev-tools-open');
-                    }
-                }
-            }, 500);
-            
-            // Disable drag and drop
-            document.addEventListener('dragstart', function(e) {
-                if (e.target.tagName === 'IMG') {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            
-            // Disable text selection on images
-            document.addEventListener('selectstart', function(e) {
-                if (e.target.tagName === 'IMG') {
-                    e.preventDefault();
-                    return false;
-                }
-            });
+            }
+        });
+        
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG' || e.target.classList.contains('protected-image')) {
+                e.preventDefault();
+                return false;
+            }
         });
     </script>
 <script type="importmap">

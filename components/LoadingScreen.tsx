@@ -94,12 +94,16 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading, onLoadingCompl
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-full h-full"
+            className="w-full h-full protected-image-container"
           >
             <img
               src={images[currentImageIndex]}
               alt="Loading"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover protected-image"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              onSelectStart={(e) => e.preventDefault()}
               onError={(e) => {
                 e.currentTarget.src = '/alyu pic.jpeg';
               }}
