@@ -30,17 +30,8 @@
   pointer-events: auto;
 }
 
-/* Invisible overlay to prevent right-click on image */
-.protected-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  pointer-events: auto;
-}
+/* Invisible overlay to prevent right-click on image - REMOVED */
+/* This was causing visual issues, protection handled by JS instead */
 
 /* Disable text selection on the entire page */
 .no-select {
@@ -164,18 +155,8 @@ p, h1, h2, h3, h4, h5, h6, span, div:not(.protected-image-container) {
   }
 }
 
-/* Disable screenshot attempts */
-.protected-image-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: 1;
-  pointer-events: auto;
-}
+/* Disable screenshot attempts - REMOVED to prevent overlay */
+/* Overlay pseudo-element removed to fix visual issues */
 
 /* Enhanced watermark - Hidden on mobile */
 .protected-image-watermark {
